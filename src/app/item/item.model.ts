@@ -7,6 +7,6 @@ export class Item  {
   order: number;
   skills: Skill[];
   text: string;
-  channels: Object[];
+
   email: Object;
 }
