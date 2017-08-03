@@ -14,7 +14,7 @@ import { Store } from '@ngrx/store';
     <span class="glyphicon glyphicon-minus pull-right" (click)="toggleskill(false)" [hidden]="!currentSkillsearchUI.toggledskills.includes(skill.id)"></span>
     <br><br>
     <div class="description" [hidden]="!currentSkillsearchUI.toggledskills.includes(skill.id)">
-    Last Used: {{skill.used | currentDate}}
+    Last Used: {{skill.used }}
     <br>
     Experience: {{skill.experience}} years
     </div>
