@@ -26,17 +26,12 @@
 
 }
 
-.dots{
-
-position:relative;
-transition: top 0.7s;
-
-}
-
 .dot-container{
 
 height: 30px;
 width: 30px;
+position:relative;
+transition: top 0.4s;
 
 }
 
