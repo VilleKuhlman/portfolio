@@ -10,10 +10,10 @@ import { Store } from '@ngrx/store';
     selector: 'skill',
     template: `
     <div>{{skill.title}}</div>
-    <span class="glyphicon glyphicon-plus pull-right" (click)="toggleskill(true)" [hidden]="currentSkillsearchUI.toggledskills.indexOf(skill.id) > -1"></span>
-    <span class="glyphicon glyphicon-minus pull-right" (click)="toggleskill(false)" [hidden]="!currentSkillsearchUI.toggledskills.indexOf(skill.id) > -1"></span>
+    <span class="glyphicon glyphicon-plus pull-right" (click)="toggleskill(true)" [hidden]="currentSkillsearchUI.toggledskills.includes(skill.id)"></span>
+    <span class="glyphicon glyphicon-minus pull-right" (click)="toggleskill(false)" [hidden]="!currentSkillsearchUI.toggledskills.includes(skill.id)"></span>
     <br><br>
-    <div class="description" [hidden]="!currentSkillsearchUI.toggledskills.indexOf(skill.id) > -1">
+    <div class="description" [hidden]="!currentSkillsearchUI.toggledskills.includes(skill.id)">
     Last Used: {{skill.used }}
     <br>
     Experience: {{skill.experience}} years
