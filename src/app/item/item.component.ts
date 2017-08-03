@@ -160,7 +160,7 @@ export class ItemComponent {
           return { x, y };
         });
 
-      let verticalMoveEnds = verticalMoveStarts.concatMap(lastMovesAtEnds).filter(coordinate => coordinate.y > 50 || coordinate.y < -50).forEach(coordinate => {
+      let verticalMoveEnds = verticalMoveStarts.concatMap(lastMovesAtEnds).filter(coordinate => coordinate.y > 35 || coordinate.y < -35).forEach(coordinate => {
            
         if(coordinate.y > 0 && (this.items[0].order === this.currentNavigationUI.order) === false && (this.currentNavigationUI.order !== 3 || this.currentSkillsearchUI.toggledskillsearch !== true)){
 
