@@ -89,13 +89,13 @@ export function reducer(state = initialState, action: Actions): State {
         const skill = action.payload.skill;
         const toggled = action.payload.toggled;
 
-        const idArray = [skill.id.toString()];
+        const idArray = [skill.id];
 
         const extendedtoggledskills = currentUIState.toggledskills.concat(idArray);
 
         const reducedtoggledskills = currentUIState.toggledskills.filter(function(id){
 
-          return id !== skill.id.toString();
+          return id !== skill.id;
 
         });
 
