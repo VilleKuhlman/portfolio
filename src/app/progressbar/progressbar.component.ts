@@ -5,9 +5,11 @@ import { Item } from '../item/item.model';
 @Component({
     selector: 'progressbar',
     template: `
-    <div *ngFor="let item of items; let i=index" class="dot-container" [ngStyle]="setStyles()">
+    <div [ngStyle]="setStyles()">
+    <div *ngFor="let item of items; let i=index" class="dot-container">
       <span [ngClass]="{'active-dot':currentNavigationUI.order === i+1}"
       class="dot"></span>
+    </div>
     </div>
     `,
     styleUrls: ['./progressbar.component.css']
