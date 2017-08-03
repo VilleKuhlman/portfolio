@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Portfolio } from '../Portfolio/portfolio.model';
+import { Portfolio } from '../portfolio/portfolio.model';
 //import { UIState } from '../action/ui-state.model';
 import { type } from './shared.utils';
 import { Item } from '../item/item.model';

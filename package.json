@@ -1,4 +1,5 @@
 {
+  
   "name": "portfolio-app",
   "version": "0.0.0",
   "license": "MIT",
@@ -28,6 +29,8 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/router-store": "^1.2.6",
     "@ngrx/store": "^2.2.2",
+    "@types/node": "^6.0.42",
+    "@types/jasmine": "2.5.38",
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "rxjs": "^5.0.1",
@@ -35,7 +38,9 @@
     "typescript": "^2.4.1",
     "zone.js": "^0.7.2",
     "node-sass": "^4.5.3",
-    "bootstrap-sass": "^3.3.7"  
+    "bootstrap-sass": "^3.3.7" ,
+    "protractor": "~4.0.13",
+    "ts-node": "1.2.1"
   },
   "devDependencies": {
     "@angular/cli": "^1.2.0",
