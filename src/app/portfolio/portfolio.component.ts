@@ -21,7 +21,7 @@ import { Store } from '@ngrx/store';
       (navigate)="navigate($event)"
       ></items>
 
-      <navigator class="col-xs-2 col-sm-1"
+      <navigator
         [currentNavigationUI]="currentNavigationUI"
         [items]="portfolio.items"
         (navigate)="navigate($event)"
