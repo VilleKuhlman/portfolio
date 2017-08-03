@@ -20,7 +20,7 @@ import { Store } from '@ngrx/store';
     <skill [currentSkillsearchUI]="currentSkillsearchUI" 
     [skill]="skill" 
     class="list-group-item" 
-    [ngClass]="{'toggled-skill':currentSkillsearchUI.toggledskills.includes(skill.id)}"
+    [ngClass]="{'toggled-skill':currentSkillsearchUI.toggledskills.includes(skill.id.toString())}"
     ></skill>
     </ng-container>
     </div>   
@@ -36,8 +36,6 @@ export class SkillsearchComponent {
     
     @Input() skills: Skill[];
    
-    searchBoxValue = '';
-
     constructor(private store: Store<fromRoot.State>){};
 
     toggleskillsearch(togglevalue) {
