@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { SkillsearchUI } from '../action/skillsearch.ui.model';
-import { Skill } from '../skill/skill.model';
+import { Skill } from './skill.model';
 import { ToggleSkillAction } from '../shared/shared.actions';
 
 import * as fromRoot from '../shared/main.reducer';
