@@ -29,7 +29,7 @@ export class SkillFilterPipe implements PipeTransform {
   transform(skills: Skill[], currentUIState: SkillsearchUI){
 
     const filteredSkills: Skill[] = skills.filter( function( s ) {
-       return currentUIState.filteredskills.indexOf( s.id.toString() ) > -1;
+       return currentUIState.filteredskills.includes( s.id );
     });
 
     return filteredSkills;

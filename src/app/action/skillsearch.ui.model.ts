@@ -1,7 +1,7 @@
 export class SkillsearchUI {
 
   toggledskillsearch: boolean;
-  filteredskills: string[];
+  filteredskills: number[];
   toggledskills: string[];
   searchboxvalue: string;
 
