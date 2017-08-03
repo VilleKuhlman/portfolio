@@ -16,13 +16,13 @@ import { Store } from '@ngrx/store';
     </div>
 
     <div *ngIf="currentSkillsearchUI.toggledskillsearch" class="skill-list col-xs-12 col-sm-10 col-sm-offset-1">
-    <ng-container *ngFor="let skill of (skills | skillFilter:currentSkillsearchUI)">
+    <div *ngFor="let skill of (skills | skillFilter:currentSkillsearchUI)">
     <skill [currentSkillsearchUI]="currentSkillsearchUI" 
     [skill]="skill" 
     class="list-group-item" 
     [ngClass]="{'toggled-skill':currentSkillsearchUI.toggledskills.includes(skill.id.toString())}"
     ></skill>
-    </ng-container>
+    </div>
     </div>   
     `,
    styleUrls: ['./skillsearch.component.css']
