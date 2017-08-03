@@ -1,4 +1,4 @@
-export class Channel {
+export class Email {
 
 title: string;
 address: string;

@@ -26,6 +26,7 @@ import { Item } from '../item/item.model';
 
 export class ContactComponent {
 
+    
     @Input() item: Item;
 
 }

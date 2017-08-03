@@ -1,5 +1,5 @@
 import { Skill } from '../skill/skill.model';
-import { Channel } from '../channel/channel.model';
+import { Email } from '../email/email.model';
 
 export class Item  {
   type: string;
@@ -8,6 +8,6 @@ export class Item  {
   order: number;
   skills: Skill[];
   text: string;
-  channels: Channel[];
-  email: Object;
+  channels: Object[];
+  email: Email;
 }
