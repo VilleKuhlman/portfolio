@@ -1,0 +1,56 @@
+{	
+	"items": [
+	
+	{
+	
+	 "type": "cover", 
+     "order": 1,
+	 "name":"Ville Kuhlman",
+	 "title":"Exprerienced full-stack developer with good knowledge of ITIL processes"
+	
+	},
+		
+	{
+	
+	 "type": "intro", 
+	 "order": 2,
+	 "title":"Who Am I?",
+	 "text":"I'm Bachelor of IT graduated in 2016 who is specialized in implementing modern web-technologies and ITIL-processes. Since the beginning of 2015 I have been working at Lempinen&Partners OY as a consultant of ITSM System named ServiceNow. During this time, I have gained great knowledge on both technical and process specific levels. For instance, I have built both SOAP and REST based bidirectional integrations and implemented complex user interfaces by using Bootstrap and AngularJS frameworks. I have also implementation experiences of the ITIL processes such as request fulfillment, incident, problem and change management.\n\nIn addition to ServiceNow, I'm also attracted into latest trends of web-technics like Functional and Reactive programming. I'm already familiar with technologies as Redux, RxJS and Angular 4. Although I'm more into front-end programming, I'm good at using back-end languages like NodeJS, PHP and Java EE as well.\n\nI'm also great at communicating with both my colleagues and customers. I have faced that each customer case needs some kind of discretion. Therefore, it is important to get into mutual understanding with the opponent. This is valuable experience which I adapted whilst working as a customer support specialist at Elisa OYJ."
+	
+	},
+
+	{
+	 "type": "skillsearch", 
+     "order": 3,
+	 "skills":[  
+		{"id": "1", "title": "Javascript", "experience": 3.5, "used": "currentdate"},
+		{"id": "2", "title": "SaSS", "experience": 1, "used": "currentdate"},
+		{"id": "3", "title": "RxJS", "experience": 1, "used": "currentdate"},
+		{"id": "4", "title": "Angular", "experience": 2.5, "used": "currentdate"},
+		{"id": "5", "title": "bootstrap", "experience": 2.5, "used": "currentdate"},
+		{"id": "6", "title": "Rest", "experience": 2, "used": "currentdate"},
+		{"id": "7", "title": "Soap", "experience": 2, "used": "currentdate"},
+		{"id": "8", "title": "XML", "experience": 3, "used": "currentdate"},
+		{"id": "9", "title": "SQL", "experience": 3, "used": "currentdate"},
+		{"id": "10", "title": "NodeJS", "experience": 1.5, "used": "currentdate"},
+		{"id": "11", "title": "Redux", "experience": 1, "used": "currentdate"},
+		{"id": "12", "title": "ServiceNow", "experience": 2.5, "used": "currentdate"},
+		{"id": "13", "title": "Java EE", "experience": 1, "used": "4 / 2015 "}
+	 ]
+	}, 	
+	
+	{
+	
+	 "type": "contact",
+	 "title": "Lets keep in touch",
+	 "channels":[
+		{"id": "1", "title": "View", "url": "https://github.com/VilleKuhlman/portfolio", "image":"github.png"},
+		{"id": "2", "title": "Follow", "url": "https://www.linkedin.com/in/ville-kuhlman-923341102", "image":"linkedin-logo.png"}
+	 ],
+	 "email":{"title":"Contact", "address":"ville.kuhlman@hotmail.com"},
+     "order": 4 
+	
+	}
+	
+	]
+}

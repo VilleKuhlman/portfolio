@@ -1,0 +1,70 @@
+.skillsearch {
+position: relative;
+padding: 0;
+top: 45%;
+transform: translateY(-45%);
+height: 7%;
+border-bottom: solid gray 2px;
+transition: top 0.5s;
+float: none !important;
+margin: 0 auto;
+}
+
+.skill-list{
+
+position: relative;
+height: 70%;
+top: 10%;
+display: block;
+padding: 0 !important;
+float: none !important;
+overflow-y: auto !important;
+        
+}
+
+
+span{
+
+position: absolute;
+top: auto;
+right: 0;
+bottom: 0;
+font-size: 24px;
+line-height: inherit !important;
+}
+
+input{
+
+border-width:0px;
+width:100%;
+position: absolute;
+bottom: 0px;
+border: none;
+font-size: 24px;
+}
+
+
+:host{
+
+display: block;
+height: 100%;
+width: 100%;
+}
+
+.input:focus{
+    outline: none;
+    outline: none;
+}
+
+.titleClass{
+
+top:10%;
+
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+[hidden] { display: none !important;}

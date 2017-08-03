@@ -1,0 +1,39 @@
+:host{
+
+    display: block;
+    position: relative;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.inner{
+
+    white-space: pre-wrap;
+    display: block;
+    height: initial;
+    font-size: 13px;
+
+}
+
+.outer{
+
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding: 0;
+}
+
+h3{
+
+font-weight: bold;
+ margin-top: 0px;
+}
+
+@media (max-width: 360px) {
+.inner{
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,45 @@
+
+:host{
+
+    width: 15px;
+    display: table;
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: initial;
+
+}
+  
+.dot{
+
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #292A2E;
+  height: 11px;
+  width: 11px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.18;
+
+}
+
+.dot-container{
+
+height: 30px;
+width: 30px;
+position:relative;
+transition: top 0.7s;
+
+}
+
+
+.active-dot{
+
+height: 15px;
+width: 15px;
+opacity: 0.8 !important;
+
+}

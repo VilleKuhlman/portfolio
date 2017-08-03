@@ -1,0 +1,22 @@
+.item{
+
+height: 100%;
+width: 100%;
+background-color: white;
+
+
+
+}
+
+:host{
+
+position: absolute;
+height: 100%;
+width: 100%;
+-webkit-transition: top 0.5s; /* Safari */
+transition: top 0.5s;
+left: 0px;
+
+}
+
+

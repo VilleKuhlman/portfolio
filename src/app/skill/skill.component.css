@@ -1,0 +1,49 @@
+:host{
+    position: relative;
+    height: 20%;
+    display: block;
+}
+
+
+:host(.toggled-skill) {
+  
+    min-height: 20%;
+    height: initial;
+    word-break: break-word;
+}
+
+
+span{
+
+font-size: 20px;
+
+}
+
+.description{
+
+    font-size:16px;
+}
+
+
+div{
+
+font-size: 24px;
+display: inline;
+
+}
+
+
+@media (max-width: 768px) {
+span{
+    font-size: 18px;
+  }
+  div{
+      font-size: 20px;
+  }
+  .description{
+    font-size:14px;
+}
+
+}
+
+[hidden] { display: none !important;}

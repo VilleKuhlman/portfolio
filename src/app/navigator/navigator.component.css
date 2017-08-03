@@ -1,0 +1,40 @@
+:host{
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color:black;
+    opacity: 0.8;
+}
+
+.icon-button {
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    padding: 0px;
+}
+
+.button-up{
+
+top: 0px;
+
+}
+
+.button-down{
+
+bottom: 0px;
+
+}
+
+button{
+
+    position: fixed;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+
+}
