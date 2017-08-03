@@ -23,19 +23,19 @@
 	 "type": "skillsearch", 
      "order": 3,
 	 "skills":[  
-		{"id": "1", "title": "Javascript", "experience": 3.5, "used": "currentdate"},
-		{"id": "2", "title": "SaSS", "experience": 1, "used": "currentdate"},
-		{"id": "3", "title": "RxJS", "experience": 1, "used": "currentdate"},
-		{"id": "4", "title": "Angular", "experience": 2.5, "used": "currentdate"},
-		{"id": "5", "title": "bootstrap", "experience": 2.5, "used": "currentdate"},
-		{"id": "6", "title": "Rest", "experience": 2, "used": "currentdate"},
-		{"id": "7", "title": "Soap", "experience": 2, "used": "currentdate"},
-		{"id": "8", "title": "XML", "experience": 3, "used": "currentdate"},
-		{"id": "9", "title": "SQL", "experience": 3, "used": "currentdate"},
-		{"id": "10", "title": "NodeJS", "experience": 1.5, "used": "currentdate"},
-		{"id": "11", "title": "Redux", "experience": 1, "used": "currentdate"},
-		{"id": "12", "title": "ServiceNow", "experience": 2.5, "used": "currentdate"},
-		{"id": "13", "title": "Java EE", "experience": 1, "used": "4 / 2015 "}
+		{"id": 1, "title": "Javascript", "experience": 3.5, "used": "currentdate"},
+		{"id": 2, "title": "SaSS", "experience": 1, "used": "currentdate"},
+		{"id": 3, "title": "RxJS", "experience": 1, "used": "currentdate"},
+		{"id": 4, "title": "Angular", "experience": 2.5, "used": "currentdate"},
+		{"id": 5, "title": "bootstrap", "experience": 2.5, "used": "currentdate"},
+		{"id": 6, "title": "Rest", "experience": 2, "used": "currentdate"},
+		{"id": 7, "title": "Soap", "experience": 2, "used": "currentdate"},
+		{"id": 8, "title": "XML", "experience": 3, "used": "currentdate"},
+		{"id": 9, "title": "SQL", "experience": 3, "used": "currentdate"},
+		{"id": 10, "title": "NodeJS", "experience": 1.5, "used": "currentdate"},
+		{"id": 11, "title": "Redux", "experience": 1, "used": "currentdate"},
+		{"id": 12, "title": "ServiceNow", "experience": 2.5, "used": "currentdate"},
+		{"id": 13, "title": "Java EE", "experience": 1, "used": "4 / 2015 "}
 	 ]
 	}, 	
 	
