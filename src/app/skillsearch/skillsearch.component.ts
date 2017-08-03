@@ -15,15 +15,15 @@ import { Store } from '@ngrx/store';
     <span class="glyphicon glyphicon-search" [hidden]="currentSkillsearchUI.toggledskillsearch"></span>
     </div>
 
-    <ng-container *ngIf="currentSkillsearchUI.toggledskillsearch" class="skill-list col-xs-12 col-sm-10 col-sm-offset-1">
-    <div *ngFor="let skill of (skills | skillFilter:currentSkillsearchUI)">
+    <div *ngIf="currentSkillsearchUI.toggledskillsearch" class="skill-list col-xs-12 col-sm-10 col-sm-offset-1">
+    <ng-container *ngFor="let skill of (skills | skillFilter:currentSkillsearchUI)">
     <skill [currentSkillsearchUI]="currentSkillsearchUI" 
     [skill]="skill" 
     class="list-group-item" 
     [ngClass]="{'toggled-skill':currentSkillsearchUI.toggledskills.includes(skill.id)}"
     ></skill>
-    </div>
-    </ng-container>   
+    </ng-container>
+    </div>   
     `,
    styleUrls: ['./skillsearch.component.css']
 
