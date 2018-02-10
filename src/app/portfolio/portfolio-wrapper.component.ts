@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Portfolio } from './portfolio.model';
 import { NavigationUI } from '../action/navigation.ui.model';
 import { SkillsearchUI } from '../action/skillsearch.ui.model';
@@ -20,15 +20,17 @@ import * as fromRoot from '../shared/main.reducer';
 
 export class PortfolioWrapperComponent {
 
-  public portfolio$ : Observable<Portfolio>;
+  public portfolio$ : Observable<Portfolio>;  
   public uiNavigation$: Observable<NavigationUI>;
   public uiSkillsearch$: Observable<SkillsearchUI>;
 
   constructor(private store: Store<fromRoot.State>){
-  
-      this.portfolio$ = this.store.let(fromRoot.getPortfolio);
-      this.uiNavigation$ = this.store.let(fromRoot.getCurrentNavigationUI);
-      this.uiSkillsearch$ = this.store.let(fromRoot.getCurrentSkillsearchUI);
+      this.portfolio$ = store.pipe(select(fromRoot.getPortfolio));
+      this.uiNavigation$ = store.pipe(select(fromRoot.getCurrentNavigationUI));
+      this.uiSkillsearch$ = store.pipe(select(fromRoot.getCurrentSkillsearchUI));
+
+      store.select(fromRoot.getCurrentNavigationUI).subscribe(x => console.log(x));
   }
+
 
 }

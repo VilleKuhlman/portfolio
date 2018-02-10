@@ -1,30 +1,28 @@
-import { Observable } from 'rxjs/Observable';
-import { Actions, ActionTypes } from '../shared/shared.actions';
+import { Observable } from 'rxjs';
 import { NavigationUI } from '../action/navigation.ui.model';
 import { Item } from '../item/item.model';
-import '@ngrx/core/add/operator/select';
-
+import * as shared from '../shared/shared.actions';
 
 export interface State {
 
-  currentUINavigation: NavigationUI
+  uiNavigation: NavigationUI
 
 };
 
 export const initialState: State = {
 
-  currentUINavigation: undefined
+  uiNavigation: undefined
 
 };
 
 
-export function reducer(state = initialState, action: Actions): State {
+export function reducer(state = initialState, action: shared.Actions): State {
   switch (action.type) {
-    case ActionTypes.LOAD: {
+    case shared.LOAD_PORTFOLIO_SUCCESS: {
       const firstItem = action.payload.items[0];
       
       const newState: State = {
-        currentUINavigation: {
+        uiNavigation: {
 
           order: firstItem.order
 
@@ -33,7 +31,7 @@ export function reducer(state = initialState, action: Actions): State {
       return newState;
     }
 
-    case ActionTypes.NAVIGATE: {
+    case shared.NAVIGATE: {
 
       const direction = action.payload.direction;
       const items = action.payload.items;
@@ -50,10 +48,13 @@ export function reducer(state = initialState, action: Actions): State {
   
 
       const newState: State = {
-        currentUINavigation: {
+        uiNavigation: {
           order: items[newItemIndex].order
         }
       }
+
+      //console.log(newState);
+
       return newState;
     }
 
@@ -63,6 +64,5 @@ export function reducer(state = initialState, action: Actions): State {
   }
 }
 
-export function getCurrentGroup(state$: Observable<State>){
-  return state$.select(s => s.currentUINavigation);
-}
+export const getCurrentGroup = (state:State) => state.uiNavigation;
+

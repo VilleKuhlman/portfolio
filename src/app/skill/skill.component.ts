@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import { SkillsearchUI } from '../action/skillsearch.ui.model';
 import { Skill } from './skill.model';
 import { ToggleSkillAction } from '../shared/shared.actions';
@@ -19,7 +19,8 @@ import { Store } from '@ngrx/store';
     Experience: {{skill.experience}} years
     </div>
     `,
-    styleUrls: ['./skill.component.css']
+    styleUrls: ['./skill.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 

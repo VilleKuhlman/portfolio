@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
 import { Portfolio } from '../portfolio/portfolio.model';
-//import { UIState } from '../action/ui-state.model';
-import { type } from './shared.utils';
 import { Item } from '../item/item.model';
 
 /**
@@ -12,54 +10,63 @@ import { Item } from '../item/item.model';
  * literal types and runs a simple check to guarantee all
  * action types in the application are unique.
  */
-export const ActionTypes = {
-    LOAD: type('[Portfolio] Load'),
-    NAVIGATE: type('[Object] Navigate'),
-    TOGGLESKILLSEARCH: type('[Object] toggleskillsearch'),
-    FILTERSKILL: type('[Object] filterskill'),
-    TOGGLESKILL: type('[Object] toggleskill')
-};
+ 
+export const LOAD_PORTFOLIO = 'Load';
+export const LOAD_PORTFOLIO_SUCCESS = '[Portfolio] Courses Get Success';
+export const LOAD_PORTFOLIO_FAILURE = '[Portfolio] Courses Get Failure';
+export const NAVIGATE = '[Object] Navigate';
+export const TOGGLESKILLSEARCH = '[Object] toggleskillsearch';
+export const FILTERSKILL = '[Object] filterskill';
+export const TOGGLESKILL = '[Object] toggleskill';
 
 /**
  * Every action is comprised of at least a type and an optional
  * payload. Expressing actions as classes enables powerful
  * type checking in reducer functions.
- *
- * See Discriminated Unions: https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
  */
 export class LoadAction implements Action {
-  readonly type = ActionTypes.LOAD;
+  readonly type = LOAD_PORTFOLIO;
+}
 
-  constructor(public payload: Portfolio) { }
+export class PortfolioLoadSuccessAction implements Action {
+  readonly type = LOAD_PORTFOLIO_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export class PortfolioLoadFailureAction implements Action {
+  readonly type = LOAD_PORTFOLIO_FAILURE;
+
+  constructor(public payload: any) { }
 }
 
 export class NavigateAction implements Action {
-  readonly type = ActionTypes.NAVIGATE;
+  readonly type = NAVIGATE;
 
   constructor(public payload: any) {}
 }
 
 export class ToggleSkillSearchAction implements Action {
-  readonly type = ActionTypes.TOGGLESKILLSEARCH;
+  readonly type = TOGGLESKILLSEARCH;
 
   constructor(public payload: any) {}
 }
 
 export class FilterSkillAction implements Action {
-  readonly type = ActionTypes.FILTERSKILL;
+  readonly type = FILTERSKILL;
 
   constructor(public payload: any) {}
 }
 
 export class ToggleSkillAction implements Action {
-  readonly type = ActionTypes.TOGGLESKILL;
+  readonly type = TOGGLESKILL;
 
   constructor(public payload: any) {}
 }
 
 /**
- * Exxport a type alias of all actions in this action group
+ * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
   */
-export type Actions = LoadAction | NavigateAction | ToggleSkillSearchAction | FilterSkillAction | ToggleSkillAction;
+export type Actions = LoadAction | PortfolioLoadSuccessAction | PortfolioLoadFailureAction | NavigateAction | ToggleSkillSearchAction | FilterSkillAction | ToggleSkillAction;
  

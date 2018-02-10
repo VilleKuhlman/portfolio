@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input,ChangeDetectionStrategy} from '@angular/core';
 import { Item } from '../item/item.model';
 
 @Component({
@@ -8,9 +8,9 @@ import { Item } from '../item/item.model';
     <h3>{{item.title}}</h3>
     <br>
     <div class="inner">{{item.text}}</div>
-    </div>    
-      `,
-    styleUrls: ['./intro.component.css']
+    </div>`,
+    styleUrls: ['./intro.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 

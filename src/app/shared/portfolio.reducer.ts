@@ -1,32 +1,24 @@
-/**
- * The compose function is one of our most handy tools. In basic terms, you give
- * it any number of functions and it returns a function. This new function
- * takes a value and chains it through every composed function, returning
- * the output.
- *
- * More: https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch5.html
- */
-import { compose } from '@ngrx/core/compose';
-import { Observable } from 'rxjs/Observable';
-import { Actions, ActionTypes } from '../shared/shared.actions';
+import { Observable } from 'rxjs';
+import * as shared from '../shared/shared.actions';
 import { Portfolio } from '../portfolio/portfolio.model';
-import '@ngrx/core/add/operator/select';
-
 
 export interface State {
-  portfolio: Portfolio;
+  portfolio: Observable<Portfolio>;
+  loaded: boolean;
 };
 
 export const initialState: State = {
-  portfolio: undefined
+  portfolio: undefined,
+  loaded: false
 };
 
 
-export function reducer(state = initialState, action: Actions): State {
+export function reducer(state = initialState, action: shared.Actions): State {
   switch (action.type) {
-    case ActionTypes.LOAD: {
+    case shared.LOAD_PORTFOLIO_SUCCESS: {
       return {
-          portfolio: action.payload
+          portfolio: action.payload,
+          loaded: true
       };
     }
     default: {
@@ -35,7 +27,5 @@ export function reducer(state = initialState, action: Actions): State {
   }
 }
 
-export function getPortfolio(state$: Observable<State>) {
-
-  return state$.select(s => s.portfolio);
-}
+export const getPortfolio = (state) => state.portfolio;
+export const getPortfolioLoaded = (state) => state.loaded;

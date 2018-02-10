@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Portfolio } from './portfolio.model';
 import { Item } from '../item/item.model';
@@ -28,31 +28,34 @@ import { Store } from '@ngrx/store';
       ></navigator>
       
   `,
-   styleUrls: ['./portfolio.component.css']
+   styleUrls: ['./portfolio.component.css'],
+   
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
-export class PortfolioComponent{
+export class PortfolioComponent {
 
   @Input() portfolio: Portfolio;
   @Input() currentNavigationUI: NavigationUI;
   @Input() currentSkillsearchUI: SkillsearchUI;
 
-  constructor(private store: Store<fromRoot.State>){};
+  constructor(private store: Store<fromRoot.State>){
+  };
 
-    navigate($event:number){
-
+  navigate($event:number){
+      
     const direction: number = $event;
     const items: Item[] = this.portfolio.items;
     const currentUIGroup: NavigationUI = this.currentNavigationUI;
 
     this.store.dispatch(new NavigateAction({direction, items, currentUIGroup}));
-    
+
   }
 
     setStyles() {   
 
-        let styles = {  
+        const styles = {  
             'top':((this.currentNavigationUI.order - 1) *-100).toString()+"%"        
         };
         return styles;

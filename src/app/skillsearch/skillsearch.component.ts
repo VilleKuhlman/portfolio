@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SkillsearchUI } from '../action/skillsearch.ui.model';
 import { ToggleSkillSearchAction} from '../shared/shared.actions';
 import { FilterSkillAction} from '../shared/shared.actions';
@@ -25,7 +25,8 @@ import { Store } from '@ngrx/store';
     </ng-container>
     </div>   
     `,
-   styleUrls: ['./skillsearch.component.css']
+   styleUrls: ['./skillsearch.component.css'],
+   changeDetection: ChangeDetectionStrategy.OnPush
 
 
 })

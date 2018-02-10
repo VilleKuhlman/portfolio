@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import { Item } from '../item/item.model';
 
 @Component({
@@ -20,7 +20,8 @@ import { Item } from '../item/item.model';
         <div class="col-sm-offset-3 col-sm-6"><h4>{{item.email.title}}</h4><h5>{{item.email.address}}</h5></div>
         </div>
       `,
-    styleUrls: ['./contact.component.css']
+    styleUrls: ['./contact.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 

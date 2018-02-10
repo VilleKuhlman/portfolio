@@ -4,8 +4,7 @@ import { PortfolioWrapperComponent } from './portfolio/portfolio-wrapper.compone
 import { AppGuard } from './app.guard'
 
 const appRoutes: Routes = [
-  {
-  
+  { 
     path: '',
     canActivate: [ AppGuard ],
     component: PortfolioWrapperComponent
@@ -13,7 +12,6 @@ const appRoutes: Routes = [
 ];
 
 export const appRoutingProviders: any[] = [
-
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

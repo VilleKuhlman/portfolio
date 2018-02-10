@@ -1,22 +1,14 @@
 import {
   Component, Input, Output, EventEmitter, NgZone, ApplicationRef,
-  ViewChild, ElementRef
+  ViewChild, ElementRef, ChangeDetectionStrategy
 } from '@angular/core';
 import { Item } from './item.model';
 import { SkillsearchUI } from '../action/skillsearch.ui.model';
 import { NavigationUI } from '../action/navigation.ui.model';
 import * as fromRoot from '../shared/main.reducer';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/throttleTime';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/merge';
-import 'rxjs/add/operator/concatMap'
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/elementAt';  
-
+import { Observable } from 'rxjs';
+import { throttleTime, merge, concatMap, first, takeUntil, elementAt } from 'rxjs/operators';
 
 @Component({
   selector: 'items',
@@ -36,6 +28,7 @@ import 'rxjs/add/operator/elementAt';
 
   `,
   styleUrls: ['./item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class ItemComponent {
@@ -77,15 +70,12 @@ export class ItemComponent {
           this.mouseWheelFunc(event);
           this.appref.tick();
         });
-    });
-
-
+   
 
     /* SWIPE EVENTS */
 
       const mouseEventToCoordinate = mouseEvent => {
 
-       
         return {
           x: mouseEvent.clientX,
           y: mouseEvent.clientY
@@ -101,24 +91,24 @@ export class ItemComponent {
         };
       };
 
-      const mouseDowns = Observable.fromEvent(this.itemsElRef.nativeElement, "mousedown").map(mouseEventToCoordinate);
-      const mouseMoves = Observable.fromEvent(window, "mousemove").map(mouseEventToCoordinate);
-      const mouseUps = Observable.fromEvent(window, "mouseup").map(mouseEventToCoordinate);
+      const $mouseDowns = Observable.fromEvent(this.itemsElRef.nativeElement, "mousedown").map(mouseEventToCoordinate);
+      const $mouseMoves = Observable.fromEvent(window, "mousemove").map(mouseEventToCoordinate);
+      const $mouseUps = Observable.fromEvent(window, "mouseup").map(mouseEventToCoordinate);
 
-      const touchStarts = Observable.fromEvent(this.itemsElRef.nativeElement, "touchstart").map(touchEventToCoordinate);
-      const touchMoves = Observable.fromEvent(this.itemsElRef.nativeElement, "touchmove").map(touchEventToCoordinate);
-      const touchEnds = Observable.fromEvent(window, "touchend").map(touchEventToCoordinate);
+      const $touchStarts = Observable.fromEvent(this.itemsElRef.nativeElement, "touchstart").map(touchEventToCoordinate);
+      const $touchMoves = Observable.fromEvent(this.itemsElRef.nativeElement, "touchmove").map(touchEventToCoordinate);
+      const $touchEnds = Observable.fromEvent(window, "touchend").map(touchEventToCoordinate);
 
 
-      const starts = mouseDowns.merge(touchStarts);
-      const moves = mouseMoves.merge(touchMoves);
-      const ends = mouseUps.merge(touchEnds);
+      const $starts = $mouseDowns.merge($touchStarts);
+      const $moves = $mouseMoves.merge($touchMoves);
+      const $ends = $mouseUps.merge($touchEnds);
 
       // Move starts with direction: Pair the move start events with the 3rd subsequent move event,
       // but only if no end event happens in between
-      let moveStartsWithDirection = starts.concatMap(dragStartEvent =>
-        moves
-          .takeUntil(ends)
+      const moveStartsWithDirection = $starts.concatMap(dragStartEvent =>
+        $moves
+          .takeUntil($ends)
           .elementAt(3)
           .catch(err => Observable.empty())
           .map(dragEvent => {
@@ -134,44 +124,48 @@ export class ItemComponent {
 
       // Vertical move starts: Keep only those move start events 
       // where the 3rd subsequent move event is rather vertical than horizontal
-      let verticalMoveStarts = moveStartsWithDirection.filter(dragStartEvent =>
+      const $verticalMoveStarts = moveStartsWithDirection.filter(dragStartEvent =>
         Math.abs(dragStartEvent.intialDeltaX) < Math.abs(dragStartEvent.initialDeltaY)
       );
 
       // Horizontal move starts: Keep only those move start events 
       // where the 3rd subsequent move event is rather horizontal than vertical
-      let horizontalMoveStarts = moveStartsWithDirection.filter(dragStartEvent =>
+      const $horizontalMoveStarts = moveStartsWithDirection.filter(dragStartEvent =>
         Math.abs(dragStartEvent.intialDeltaX) >= Math.abs(dragStartEvent.initialDeltaY)
       );
 
       // Take the moves until an end occurs
-      const movesUntilEnds = dragStartEvent =>
-        moves.takeUntil(ends).map(dragEvent => {
+      const $movesUntilEnds = dragStartEvent =>
+      $moves.takeUntil($ends).map(dragEvent => {
           const x = dragEvent.x - dragStartEvent.x;
           const y = dragEvent.y - dragStartEvent.y;
           return { x, y };
         });
 
 
-      const lastMovesAtEnds = dragStartEvent =>
-        ends.first().map(dragEndEvent => {
+      const $lastMovesAtEnds = dragStartEvent =>
+      $ends.first().map(dragEndEvent => {
           const x = dragEndEvent.x - dragStartEvent.x;
           const y = dragEndEvent.y - dragStartEvent.y;
           return { x, y };
         });
 
-      let verticalMoveEnds = verticalMoveStarts.concatMap(lastMovesAtEnds).filter(coordinate => coordinate.y > 35 || coordinate.y < -35).forEach(coordinate => {
+      const $verticalMoveEnds = $verticalMoveStarts.concatMap($lastMovesAtEnds).filter(coordinate => coordinate.y > 35 || coordinate.y < -35).forEach(coordinate => {
            
         if(coordinate.y > 0 && (this.items[0].order === this.currentNavigationUI.order) === false && (this.currentNavigationUI.order !== 3 || this.currentSkillsearchUI.toggledskillsearch !== true)){
 
           this.navigate.emit(-1);
+          this.appref.tick();
 
         }else if(coordinate.y < 0 && (this.items[this.items.length-1].order === this.currentNavigationUI.order) === false && (this.currentNavigationUI.order !== 3 || this.currentSkillsearchUI.toggledskillsearch !== true)){
 
           this.navigate.emit(1);
+          this.appref.tick();
         }
         
        });
+
+      });
 
     }
 
@@ -180,9 +174,9 @@ export class ItemComponent {
 
   mouseWheelFunc(event: any) {
 
-    var event = window.event || event; // old IE support
+    const wEvent = window.event || event; // old IE support
 
-    const delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+    const delta = Math.max(-1, Math.min(1, (wEvent.wheelDelta || -wEvent.detail)));
 
     if (delta > 0 && (this.items[0].order === this.currentNavigationUI.order) === false && (this.currentNavigationUI.order !== 3 || this.currentSkillsearchUI.toggledskillsearch !== true)) {
       this.navigate.emit(-1);
@@ -190,13 +184,12 @@ export class ItemComponent {
       this.navigate.emit(1);
     }
     // for IE
-    event.returnValue = false;
+    wEvent.returnValue = false;
     // for Chrome and Firefox
-    if (event.preventDefault) {
-      event.preventDefault();
+    if (wEvent.preventDefault) {
+      wEvent.preventDefault();
     }
   }
-
 
 }
 

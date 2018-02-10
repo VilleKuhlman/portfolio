@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import { NavigationUI } from '../action/navigation.ui.model';
 import { Item } from '../item/item.model';   
 
@@ -10,7 +10,8 @@ import { Item } from '../item/item.model';
       class="dot"></span>
     </div>
     `,
-    styleUrls: ['./progressbar.component.css']
+    styleUrls: ['./progressbar.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 

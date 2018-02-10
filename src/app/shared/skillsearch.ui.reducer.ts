@@ -1,31 +1,24 @@
-import { Observable } from 'rxjs/Observable';
-import { Actions, ActionTypes } from '../shared/shared.actions';
+import { Observable } from 'rxjs';
+import * as shared from '../shared/shared.actions';
 import { SkillsearchUI } from '../action/skillsearch.ui.model';
 import { Item } from '../item/item.model';
 import { Skill } from '../skill/skill.model';
-import '@ngrx/core/add/operator/select';
-
 
 export interface State {
-
-  currentSkillsearchUI: SkillsearchUI
-
+  uiSkillsearch: SkillsearchUI
 };
 
 export const initialState: State = {
-
-  currentSkillsearchUI: undefined
-
+  uiSkillsearch: undefined
 };
 
 
-export function reducer(state = initialState, action: Actions): State {
+export function reducer(state = initialState, action: shared.Actions): State {
   switch (action.type) {
-    case ActionTypes.LOAD: {
-      const firstItem = action.payload.items[0];
-      
+    case shared.LOAD_PORTFOLIO_SUCCESS: {
+           
       const newState: State = {
-        currentSkillsearchUI: {
+        uiSkillsearch: {
 
           toggledskillsearch: false,
           filteredskills: [],
@@ -37,26 +30,23 @@ export function reducer(state = initialState, action: Actions): State {
       return newState;
     }
 
-      case ActionTypes.TOGGLESKILLSEARCH: {
+      case shared.TOGGLESKILLSEARCH: {
         const currentSkillsearchUI = action.payload.currentSkillsearchUI;
         const newtogglevalue = action.payload.toggled;
 
         const toggled = newtogglevalue ? newtogglevalue : currentSkillsearchUI.searchboxvalue === '' ? newtogglevalue : currentSkillsearchUI.toggledskillsearch;
 
         const newState: State = {
-          currentSkillsearchUI: {
- 
-            toggledskillsearch: toggled,
-            filteredskills: currentSkillsearchUI.filteredskills,
+          uiSkillsearch: { ...state.uiSkillsearch, ... {
+            toggledskillsearch: toggled,    
             toggledskills: [],
-            searchboxvalue: currentSkillsearchUI.searchboxvalue
-          }
+          }}
         }
         return newState;
     }
 
 
-      case ActionTypes.FILTERSKILL: {
+      case shared.FILTERSKILL: {
 
         const currentSkillsearchUI = action.payload.currentSkillsearchUI;
         const inputValue = action.payload.inputValue;
@@ -73,7 +63,7 @@ export function reducer(state = initialState, action: Actions): State {
 
 
         const newState: State = {
-          currentSkillsearchUI: {
+          uiSkillsearch: {
             toggledskillsearch: true,
             filteredskills: filteredSkills,
             toggledskills: [],
@@ -84,7 +74,7 @@ export function reducer(state = initialState, action: Actions): State {
     }
 
 
-     case ActionTypes.TOGGLESKILL: {
+     case shared.TOGGLESKILL: {
         const currentUIState = action.payload.currentUIState;
         const skill = action.payload.skill;
         const toggled = action.payload.toggled;
@@ -103,12 +93,10 @@ export function reducer(state = initialState, action: Actions): State {
 
 
         const newState: State = {
-          currentSkillsearchUI: {
+          uiSkillsearch: { ...state.uiSkillsearch, ... {
             toggledskillsearch: true,
-            filteredskills: currentUIState.filteredskills,
-            toggledskills: toggledskills,
-            searchboxvalue: currentUIState.searchboxvalue
-          }
+            toggledskills: toggledskills
+          }}
         }
         return newState;
     }
@@ -119,6 +107,6 @@ export function reducer(state = initialState, action: Actions): State {
   }
 }
 
-export function getCurrentGroup(state$: Observable<State>){
-  return state$.select(s => s.currentSkillsearchUI);
-}
+export const getCurrentGroup = state => state.uiSkillsearch;
+
+
