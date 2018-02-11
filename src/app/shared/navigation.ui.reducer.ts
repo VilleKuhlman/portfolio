@@ -53,8 +53,6 @@ export function reducer(state = initialState, action: shared.Actions): State {
         }
       }
 
-      //console.log(newState);
-
       return newState;
     }
 

@@ -28,8 +28,6 @@ export class PortfolioWrapperComponent {
       this.portfolio$ = store.pipe(select(fromRoot.getPortfolio));
       this.uiNavigation$ = store.pipe(select(fromRoot.getCurrentNavigationUI));
       this.uiSkillsearch$ = store.pipe(select(fromRoot.getCurrentSkillsearchUI));
-
-      store.select(fromRoot.getCurrentNavigationUI).subscribe(x => console.log(x));
   }
 
 

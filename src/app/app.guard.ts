@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { map, take } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { map, take, filter } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 import { PortfolioService } from './portfolio/portfolio.service';
@@ -30,14 +30,18 @@ export class AppGuard implements CanActivate {
 
   getPortfolioFromAPI(): Observable<boolean> {
             
-        return this.store.select(fromRoot.getPortfolioLoaded).
+        return this.store.pipe(
+          select(fromRoot.getPortfolioLoaded),
           map(portfolio => {
             if (!portfolio) {
               this.store.dispatch(new actions.LoadAction());
               return false;
             }
             return true;
-          }).filter(loaded => loaded).take(1);
+          }),
+          filter(loaded => loaded),
+          take(1)
+        );
   }
   
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {

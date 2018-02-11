@@ -1,11 +1,9 @@
 import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-
 import * as Shared from './shared.actions';
 import { PortfolioService } from '../portfolio/portfolio.service';
-
-import 'rxjs/add/operator/exhaustMap';
 import { of } from 'rxjs/observable/of';
+import { exhaustMap, map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class PortfolioEffects {
@@ -17,11 +15,12 @@ export class PortfolioEffects {
 
   @Effect()
   getPortfolio$ = this.actions$
-    .ofType(Shared.LOAD_PORTFOLIO)
-    .exhaustMap(() =>
-      this.portfolioService.getItems()
-        .map(portfolioEntity => new Shared.PortfolioLoadSuccessAction(portfolioEntity))   
-        .catch(error => of(new Shared.PortfolioLoadFailureAction(error)))
-    );
+    .ofType(Shared.LOAD_PORTFOLIO).pipe(
+    exhaustMap(() =>
+      this.portfolioService.getItems().pipe(
+        map(portfolioEntity => new Shared.PortfolioLoadSuccessAction(portfolioEntity)),
+        catchError(error => of(new Shared.PortfolioLoadFailureAction(error)))
+      )
+    ));
 
 }
