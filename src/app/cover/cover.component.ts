@@ -4,7 +4,7 @@ import { Item } from '../item/item.model';
 @Component({
     selector: 'cover',
     template: `
-        <img class="col-xs-8" src="../assets/images/profile.png" />
+        <img class="col-8" src="../assets/images/profile.png" />
         <h3>{{item.name}}</h3>
         <h4>{{item.title}}</h4>
       `,

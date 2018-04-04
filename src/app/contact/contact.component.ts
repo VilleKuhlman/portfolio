@@ -17,7 +17,7 @@ import { Item } from '../item/item.model';
         </div>
         
         <div class="row email">
-        <div class="col-sm-offset-3 col-sm-6"><h4>{{item.email.title}}</h4><h5>{{item.email.address}}</h5></div>
+        <div class="offset-sm-3 col-sm-6"><h4>{{item.email.title}}</h4><h5>{{item.email.address}}</h5></div>
         </div>
       `,
     styleUrls: ['./contact.component.css'],

@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/scss/bootstrap";
+
 @import 'variables';
-@import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
+
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
 html, body {
@@ -12,16 +17,11 @@ html, body {
     width: 100%;
     min-height: 568px;
 }
-.glyphicon{
-
-cursor: pointer;
-
+.fas{
+    cursor: pointer;
 }
 
-
 main{
-
-height: 100%;
-font-family: 'Titillium Web', sans-serif;
-
+    height: 100%;
+    font-family: 'Titillium Web', sans-serif;
 }

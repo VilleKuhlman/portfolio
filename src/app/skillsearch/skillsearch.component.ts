@@ -10,12 +10,12 @@ import { Store } from '@ngrx/store';
 @Component({
     selector: 'skillsearch',
     template: `
-    <div class="skillsearch col-xs-11 col-sm-8" [ngClass]="{'titleClass':currentSkillsearchUI.toggledskillsearch}">
+    <div class="skillsearch col-11 col-sm-8" [ngClass]="{'titleClass':currentSkillsearchUI.toggledskillsearch}">
     <input type="text" #searchBox class="input" (focusin)="toggleskillsearch(true)" (focusout)="toggleskillsearch(false)" placeholder="Search for skills" (keyup)="search(searchBox.value)" />
-    <span class="glyphicon glyphicon-search" [hidden]="currentSkillsearchUI.toggledskillsearch"></span>
+    <span class="fas fa-search" [hidden]="currentSkillsearchUI.toggledskillsearch"></span>
     </div>
 
-    <div *ngIf="currentSkillsearchUI.toggledskillsearch" class="skill-list col-xs-12 col-sm-10 col-sm-offset-1">
+    <div *ngIf="currentSkillsearchUI.toggledskillsearch" class="skill-list col-12 col-sm-10 offset-sm-1">
     <ng-container *ngFor="let skill of (skills | skillFilter:currentSkillsearchUI)">
     <skill [currentSkillsearchUI]="currentSkillsearchUI" 
     [skill]="skill" 

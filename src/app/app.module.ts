@@ -29,7 +29,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { reducers } from './shared/main.reducer';
 
-
 @NgModule({
   declarations: [
     AppComponent,

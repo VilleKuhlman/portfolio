@@ -19,8 +19,13 @@ h4{
 
     position: relative;
     font-weight: bold;
+    font-size: 18px;
     margin: 0 auto;
     display: inline;
+}
+
+h5{
+    font-size: 14px;
 }
 
 .row{
@@ -41,12 +46,11 @@ img{
 
 .email{
 
-top: 55%;
-transform: translateY(-75%);
+    top: 55%;
+    transform: translateY(-75%);
 
 }
 
 a{
-
-  color:#333333;  
+    color:#333333;  
 }
